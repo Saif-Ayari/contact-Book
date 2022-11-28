@@ -41,6 +41,43 @@ app.get('/get', async (req, res) => {
     });
   }
 });
+app.patch('/update/:id', async (req, res) => {
+  const updateContact = await contact.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+  try {
+    res.status(200).json({
+      status: 'Success',
+      data: { updateContact },
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: 'Failed',
+      message: err,
+    });
+  }
+});
+
+app.delete('/delete/:id', async (req, res) => {
+  await contact.findByIdAndDelete(req.params.id);
+
+  try {
+    res.status(204).json({
+      status: 'Success',
+      data: {},
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: 'Failed',
+      message: err,
+    });
+  }
+});
 
 const port = 5000;
 app.listen(port, () => console.log(`server yejri fel port ${port}..`));
