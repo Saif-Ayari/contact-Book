@@ -4,9 +4,11 @@ import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 
 export default function Update(props) {
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
+  var [name, setName] = useState('');
+  var [phone, setPhone] = useState('');
+  var [email, setEmail] = useState('');
+
+  var newData = { name, phone, email };
   return (
     <div>
       <Form>
@@ -38,7 +40,7 @@ export default function Update(props) {
         <Button
           variant="success"
           onClick={() => {
-            return props.updateContact({ name, phone, email });
+            return props.up(newData);
           }}
         >
           Update

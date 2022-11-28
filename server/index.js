@@ -41,7 +41,7 @@ app.get('/get', async (req, res) => {
     });
   }
 });
-app.patch('/update/:id', async (req, res) => {
+app.put('/update/:id', async (req, res) => {
   const updateContact = await contact.findByIdAndUpdate(
     req.params.id,
     req.body,

@@ -24,8 +24,13 @@ export default function AllContact(props) {
             <Card.Subtitle className="mb-2 text-muted">{e.phone}</Card.Subtitle>
             <Card.Text>{e.email}</Card.Text>
             <Link to={'/update'}>
-              <Button variant="warning" onClick={() => {props.getId(e._id)}}>
-                Update
+              <Button
+                variant="warning"
+                onClick={() => {
+                  props.getId(e._id);
+                }}
+              >
+                change
               </Button>
             </Link>
 

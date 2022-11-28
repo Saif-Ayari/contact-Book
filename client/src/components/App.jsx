@@ -33,10 +33,13 @@ export default function App() {
     setID(e);
   };
   var updateContact = (e) => {
-    axios.put(`http://localhost:5000/delete/${ids}`, e).then((res) => {
-      window.location.reload();
-      console.log('tdadlet');
-    });
+    axios
+      .put(`http://localhost:5000/update/${ids}`, e)
+      .then((res) => {
+        window.location.reload();
+        console.log('tdadlet');
+      })
+      .catch((err) => console.log(err));
   };
   var remove = (id) => {
     axios.delete(`http://localhost:5000/delete/${id}`).then((res) => {
@@ -69,10 +72,7 @@ export default function App() {
             }
           />
           <Route path="/create" element={<CreateContact add={add} />} />
-          <Route
-            path="/update"
-            element={<Update updateContact={updateContact} />}
-          />
+          <Route path="/update" element={<Update up={updateContact} />} />
         </Route>
       </Routes>
     </div>
